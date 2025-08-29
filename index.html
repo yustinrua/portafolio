@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+    html { scroll-behavior: smooth; }
     body {
         color: #fff;
         overflow-x: hidden;
@@ -30,7 +31,7 @@
         100% { background-position: 0% 50%; }
     }
 
-    /* ===== Header con efecto glass ===== */
+    /* ===== Header moderno ===== */
     header {
         position: fixed;
         top: 0;
@@ -50,14 +51,47 @@
         font-weight: bold;
         color: #2ecc71;
     }
+
     nav a {
         margin: 0 15px;
         color: #fff;
         font-weight: 500;
-        transition: color 0.3s ease;
+        position: relative;
+        text-decoration: none;
+        transition: color 0.3s ease, transform 0.3s ease;
+    }
+    nav a::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 3px;
+        left: 0;
+        bottom: -8px;
+        background: linear-gradient(90deg, #2ecc71, #00ff99, #2ecc71);
+        background-size: 200% 200%;
+        animation: moverGradiente 3s linear infinite;
+        transition: width 0.4s ease;
+        border-radius: 3px;
     }
     nav a:hover {
         color: #2ecc71;
+        transform: translateY(-3px);
+        text-shadow: 0 0 8px #2ecc71;
+    }
+    nav a:hover::after {
+        width: 100%;
+    }
+    nav a.activo {
+        color: #2ecc71;
+    }
+    nav a.activo::after {
+        width: 100%;
+    }
+
+    @keyframes moverGradiente {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
     }
 
     /* ===== Hero principal ===== */
@@ -100,7 +134,7 @@
         margin-bottom: 30px;
     }
 
-    /* ===== Botón contacto innovador ===== */
+    /* ===== Botón contacto ===== */
     .btn-contacto {
         padding: 15px 35px;
         background: transparent;
@@ -134,6 +168,13 @@
         padding: 100px 10%;
         text-align: center;
         position: relative;
+        opacity: 0;
+        transform: translateY(50px);
+        transition: all 0.8s ease-out;
+    }
+    section.visible {
+        opacity: 1;
+        transform: translateY(0);
     }
     section h2 {
         font-size: 2.5rem;
@@ -243,7 +284,6 @@
     </div>
     <h2>Hola, soy Alexander Rua</h2>
     <p>Desarrollador apasionado por crear experiencias digitales únicas, modernas y llenas de valor. Bienvenido a mi espacio creativo.</p>
-   
 </section>
 
 <section id="historia">
@@ -285,12 +325,13 @@
     &copy; 2025 - Alexander Rua | Todos los derechos reservados.
     <div class="footer-redes">
         <a href="https://github.com"><i class="fab fa-github"></i></a>
-        <a href="https://www.instagram.com/yustin.gonzalez.758?igsh=bTE4a2tmOW5uMjRh&utm_source=qr"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.tiktok.com/@yustin__gonzalez?_t=ZS-8zGuoataP1V&_r=1"><i class="fab fa-tiktok"></i></a>
+        <a href="https://www.instagram.com/yustin.gonzalez.758"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/@yustin__gonzalez"><i class="fab fa-tiktok"></i></a>
     </div>
 </footer>
 
 <script>
+    // Partículas dinámicas
     const fondo = document.querySelector('.fondo-animado');
     for (let i = 0; i < 20; i++) {
         const particula = document.createElement('div');
@@ -303,6 +344,40 @@
         particula.style.animationDuration = `${Math.random() * 10 + 10}s`;
         fondo.appendChild(particula);
     }
+
+    // Scroll activo
+    const secciones = document.querySelectorAll("section");
+    const enlaces = document.querySelectorAll("nav a");
+
+    window.addEventListener("scroll", () => {
+        let actual = "";
+        secciones.forEach(seccion => {
+            const top = window.scrollY;
+            const offset = seccion.offsetTop - 100;
+            const height = seccion.offsetHeight;
+            if (top >= offset && top < offset + height) {
+                actual = seccion.getAttribute("id");
+            }
+        });
+
+        enlaces.forEach(link => {
+            link.classList.remove("activo");
+            if (link.getAttribute("href") === `#${actual}`) {
+                link.classList.add("activo");
+            }
+        });
+    });
+
+    // Animación al hacer scroll (Intersection Observer)
+    const observer = new IntersectionObserver((entradas) => {
+        entradas.forEach(entrada => {
+            if (entrada.isIntersecting) {
+                entrada.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('section').forEach(sec => observer.observe(sec));
 </script>
 
 </body>
