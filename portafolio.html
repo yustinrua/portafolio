@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portafolio | Alexander Rua</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+    body {
+        color: #fff;
+        overflow-x: hidden;
+        background: #0d0d0d;
+    }
+
+    /* ===== Fondo dinámico ===== */
+    .fondo-animado {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(270deg, #0d0d0d, #1a1a1a, #121212, #2a2a2a);
+        background-size: 800% 800%;
+        animation: movimientoFondo 15s ease infinite;
+        z-index: -1;
+    }
+    @keyframes movimientoFondo {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    /* ===== Header con efecto glass ===== */
+    header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 50px;
+        backdrop-filter: blur(15px);
+        background: rgba(20,20,20,0.4);
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+        z-index: 1000;
+    }
+    header h1 {
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: #2ecc71;
+    }
+    nav a {
+        margin: 0 15px;
+        color: #fff;
+        font-weight: 500;
+        transition: color 0.3s ease;
+    }
+    nav a:hover {
+        color: #2ecc71;
+    }
+
+    /* ===== Hero principal ===== */
+    .seccion-inicio {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 0 20px;
+        position: relative;
+    }
+    .foto-perfil {
+        width: 160px;
+        height: 160px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 4px solid #2ecc71;
+        margin-bottom: 20px;
+        animation: rotarBorde 8s linear infinite;
+    }
+    .foto-perfil img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    @keyframes rotarBorde {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+    .seccion-inicio h2 {
+        font-size: 3rem;
+        margin-bottom: 10px;
+    }
+    .seccion-inicio p {
+        max-width: 600px;
+        font-size: 1.2rem;
+        color: #ccc;
+        margin-bottom: 30px;
+    }
+
+    /* ===== Botón contacto innovador ===== */
+    .btn-contacto {
+        padding: 15px 35px;
+        background: transparent;
+        color: #2ecc71;
+        border: 2px solid #2ecc71;
+        border-radius: 50px;
+        font-size: 1.1rem;
+        cursor: pointer;
+        transition: 0.4s;
+        position: relative;
+        overflow: hidden;
+    }
+    .btn-contacto::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: #2ecc71;
+        transform: translateX(-100%);
+        transition: 0.4s;
+        z-index: -1;
+    }
+    .btn-contacto:hover::before {
+        transform: translateX(0);
+    }
+    .btn-contacto:hover {
+        color: #fff;
+    }
+
+    section {
+        padding: 100px 10%;
+        text-align: center;
+        position: relative;
+    }
+    section h2 {
+        font-size: 2.5rem;
+        margin-bottom: 40px;
+        color: #2ecc71;
+    }
+    .contenido {
+        max-width: 900px;
+        margin: 0 auto;
+        color: #ccc;
+        font-size: 1.1rem;
+        line-height: 1.8;
+    }
+
+    /* ===== Habilidades ===== */
+    .habilidades {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 30px;
+        margin-top: 40px;
+    }
+    .habilidad {
+        flex: 1 1 200px;
+        padding: 25px;
+        background: rgba(255,255,255,0.03);
+        border-radius: 20px;
+        transition: transform 0.4s ease, background 0.4s ease;
+    }
+    .habilidad:hover {
+        transform: translateY(-10px);
+        background: rgba(46,204,113,0.1);
+    }
+    .habilidad h3 {
+        margin-bottom: 10px;
+        color: #2ecc71;
+    }
+
+    /* ===== Redes sociales ===== */
+    .redes {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+    }
+    .redes a {
+        color: #fff;
+        font-size: 1.5rem;
+        transition: color 0.3s ease;
+    }
+    .redes a:hover {
+        color: #2ecc71;
+    }
+
+    footer {
+        background: rgba(15,15,15,0.9);
+        padding: 25px;
+        text-align: center;
+        font-size: 0.9rem;
+        color: #aaa;
+        margin-top: 50px;
+    }
+    .footer-redes {
+        margin-top: 10px;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+    .footer-redes a {
+        color: #fff;
+        font-size: 1.3rem;
+        transition: color 0.3s ease;
+    }
+    .footer-redes a:hover {
+        color: #2ecc71;
+    }
+
+    /* ===== Partículas ===== */
+    .particula {
+        position: absolute;
+        background: rgba(46,204,113,0.3);
+        border-radius: 50%;
+        animation: flotar 12s linear infinite;
+    }
+    @keyframes flotar {
+        from { transform: translateY(0) translateX(0); opacity: 0.6; }
+        to { transform: translateY(-120vh) translateX(50px); opacity: 0; }
+    }
+</style>
+</head>
+<body>
+
+<div class="fondo-animado"></div>
+
+<header>
+    <h1>Alexander Rua</h1>
+    <nav>
+        <a href="#historia">Historia</a>
+        <a href="#experiencia">Experiencia</a>
+        <a href="#habilidades">Habilidades</a>
+        <a href="#contacto">Contacto</a>
+    </nav>
+</header>
+
+<section class="seccion-inicio">
+    <div class="foto-perfil">
+        <img src="foto_personal.jpg" alt="Foto de Alexander Rua">
+    </div>
+    <h2>Hola, soy Alexander Rua</h2>
+    <p>Desarrollador apasionado por crear experiencias digitales únicas, modernas y llenas de valor. Bienvenido a mi espacio creativo.</p>
+   
+</section>
+
+<section id="historia">
+    <h2>Mi Historia</h2>
+    <p class="contenido">
+        Descubrí la programación y comprendí que no era solo código, sino creatividad hecha realidad. 
+        Superé desafíos, aprendí de cada error y transformé mi pasión en propósito. 
+        Hoy sigo explorando, creciendo y construyendo soluciones que impacten.
+    </p>
+</section>
+
+<section id="experiencia">
+    <h2>Experiencia</h2>
+    <p class="contenido">
+        He trabajado en proyectos web dinámicos y actualmente desarrollo mi iniciativa personal llamada <strong>Medicorpex</strong>. 
+        También he liderado equipos y proyectos tecnológicos, fusionando técnica con estrategia para lograr resultados innovadores.
+    </p>
+</section>
+
+<section id="habilidades">
+    <h2>Habilidades</h2>
+    <div class="habilidades">
+        <div class="habilidad"><h3>HTML5</h3><p>Estructuras semánticas optimizadas.</p></div>
+        <div class="habilidad"><h3>CSS3</h3><p>Diseños responsivos y animaciones.</p></div>
+        <div class="habilidad"><h3>JavaScript</h3><p>Lógica avanzada e interactividad.</p></div>
+        <div class="habilidad"><h3>MySQL</h3><p>Gestión de datos eficiente y segura.</p></div>
+        <div class="habilidad"><h3>Liderazgo</h3><p>Gestión de proyectos y equipos.</p></div>
+        <div class="habilidad"><h3>Comunicación</h3><p>Trabajo en equipo y claridad de ideas.</p></div>
+    </div>
+</section>
+
+<section id="contacto">
+    <h2>Contacto</h2>
+    <p class="contenido">¿Tienes una idea increíble? ¡Construyámosla juntos!</p>
+    <a href="mailto:alexyus1025@gmail.com"><button class="btn-contacto">Hablemos Ahora</button></a>
+</section>
+
+<footer>
+    &copy; 2025 - Alexander Rua | Todos los derechos reservados.
+    <div class="footer-redes">
+        <a href="https://github.com"><i class="fab fa-github"></i></a>
+        <a href="https://www.instagram.com/yustin.gonzalez.758?igsh=bTE4a2tmOW5uMjRh&utm_source=qr"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/@yustin__gonzalez?_t=ZS-8zGuoataP1V&_r=1"><i class="fab fa-tiktok"></i></a>
+    </div>
+</footer>
+
+<script>
+    const fondo = document.querySelector('.fondo-animado');
+    for (let i = 0; i < 20; i++) {
+        const particula = document.createElement('div');
+        particula.classList.add('particula');
+        const size = Math.random() * 15 + 5;
+        particula.style.width = `${size}px`;
+        particula.style.height = `${size}px`;
+        particula.style.left = `${Math.random() * 100}%`;
+        particula.style.top = `${Math.random() * 100}%`;
+        particula.style.animationDuration = `${Math.random() * 10 + 10}s`;
+        fondo.appendChild(particula);
+    }
+</script>
+
+</body>
+</html>
