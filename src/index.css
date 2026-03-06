@@ -407,3 +407,75 @@ color:#60a5fa;
 margin-top:40px;
 opacity:.5;
 }
+
+/* RESPONSIVE HELPERS */
+
+@media (max-width: 1024px) {
+  /* reduce large paddings on medium screens */
+  section,
+  .project-section,
+  .contact-section {
+    padding-left:5%;
+    padding-right:5%;
+  }
+  .trust h2,
+  .contact-section h2 {
+    font-size:32px;
+    margin-bottom:40px;
+  }
+}
+
+@media (max-width: 768px) {
+  /* single-column hero */
+  .hero-container {
+    grid-template-columns:1fr;
+    gap:30px;
+    padding:60px 5%;
+  }
+  .welcome {
+    font-size:60px;
+  }
+  .subtitle {
+    font-size:20px;
+  }
+  .hero-image img {
+    width:100%;
+    max-width:300px;
+  }
+  .trust-grid {
+    grid-template-columns:1fr;
+  }
+  .skills-section {
+    padding:80px 20px;
+  }
+  .project-card {
+    width:100%;
+    height:auto;
+    min-height:200px;
+  }
+  .contact-icons {
+    flex-direction:column;
+    gap:20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .welcome {
+    font-size:48px;
+  }
+  .subtitle {
+    font-size:18px;
+  }
+  .hero-buttons {
+    flex-direction:column;
+    align-items:center;
+  }
+  .hero-buttons button {
+    width:100%;
+    max-width:250px;
+  }
+  .skill-card {
+    padding:8px 16px;
+    font-size:14px;
+  }
+}
