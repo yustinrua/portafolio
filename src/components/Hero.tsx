@@ -28,8 +28,13 @@ Mi enfoque combina liderazgo, pensamiento analítico y aprendizaje constante par
 
 <div className="hero-buttons">
 
-<button>Ver proyectos</button>
-<button>Contacto</button>
+<a href="#projects">
+  <button>Ver proyectos</button>
+</a>
+
+<a href="#contact">
+  <button>Contacto</button>
+</a>
 
 </div>
 
