@@ -20,7 +20,8 @@ github:"https://github.com/yustinrua/medicorpex"
 
 return(
 
-<section className="project-section">
+<section id="projects" className="project-section">
+
 
     <SectionReveal>
 
