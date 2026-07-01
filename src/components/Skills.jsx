@@ -14,9 +14,7 @@ const skills = [
 "C++",
 "SQL",
 "Software Architecture",
-"Leadership",
-"Problem Solving",
-"UI/UX Thinking"
+
 ];
 
 return(
